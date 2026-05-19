@@ -79,6 +79,30 @@ func concluir(w http.ResponseWriter, r *http.Request) {
 	)
 }
 
+func excluir(w http.ResponseWriter, r *http.Request) {
+
+	id, _ := strconv.Atoi(
+		r.URL.Query().Get("id"),
+	)
+
+	if id >= 0 &&
+		id < len(tarefas) {
+
+		tarefas =
+			append(
+				tarefas[:id],
+				tarefas[id+1:]...,
+			)
+	}
+
+	http.Redirect(
+		w,
+		r,
+		"/",
+		http.StatusSeeOther,
+	)
+}
+
 func main() {
 
 	http.HandleFunc("/", home)
@@ -86,6 +110,11 @@ func main() {
 	http.HandleFunc(
 		"/concluir",
 		concluir,
+	)
+	
+	http.HandleFunc(
+		"/excluir",
+		excluir,
 	)
 
 	http.ListenAndServe(

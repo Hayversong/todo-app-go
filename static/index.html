@@ -21,6 +21,7 @@
                 {{if $tarefa.Concluida}} ✔ {{else}} ☐ {{end}} {{$tarefa.Titulo}}
 
                 <a href="/concluir?id={{$i}}"> Alternar </a>
+                <a href="/excluir?id={{$i}}"> Excluir </a>
             </li>
 
             {{end}}
