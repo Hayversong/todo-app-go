@@ -1,0 +1,9 @@
+# binários
+*.exe
+*.out
+
+# editor
+.zed/
+
+# sistema
+.DS_Store

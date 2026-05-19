@@ -1,0 +1,25 @@
+<!doctype html>
+
+<html>
+    <head>
+        <title>To-Do App</title>
+    </head>
+
+    <body>
+        <h1>Minha To-Do List</h1>
+
+        <form method="POST">
+            <input type="text" name="tarefa" placeholder="Digite uma tarefa" />
+
+            <button>Adicionar</button>
+        </form>
+
+        <ul>
+            {{range .}}
+
+            <li>{{.}}</li>
+
+            {{end}}
+        </ul>
+    </body>
+</html>
