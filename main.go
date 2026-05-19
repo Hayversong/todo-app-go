@@ -111,10 +111,17 @@ func main() {
 		"/concluir",
 		concluir,
 	)
-	
+
 	http.HandleFunc(
 		"/excluir",
 		excluir,
+	)
+
+	http.Handle(
+		"/style.css",
+		http.FileServer(
+			http.Dir("./static"),
+		),
 	)
 
 	http.ListenAndServe(
