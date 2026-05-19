@@ -7,25 +7,43 @@
     </head>
 
     <body>
-        <h1>Minha To-Do List</h1>
+        <div class="container">
+            <h1>To-Do App</h1>
 
-        <form method="POST">
-            <input type="text" name="tarefa" placeholder="Digite uma tarefa" />
+            <form method="POST">
+                <input
+                    type="text"
+                    name="tarefa"
+                    placeholder="O que vamos fazer hoje?"
+                />
 
-            <button>Adicionar</button>
-        </form>
+                <button>Adicionar</button>
+            </form>
 
-        <ul>
-            {{range $i, $tarefa := .}}
+            <ul>
+                {{range $i,$tarefa:=.}}
 
-            <li>
-                {{if $tarefa.Concluida}} ✔ {{else}} ☐ {{end}} {{$tarefa.Titulo}}
+                <li
+                    class="
+                        {{if $tarefa.Concluida}}
+                        concluida
+                        {{end}}
+                        "
+                >
+                    <span>
+                        {{if $tarefa.Concluida}} ✔ {{else}} ☐ {{end}}
+                        {{$tarefa.Titulo}}
+                    </span>
 
-                <a href="/concluir?id={{$i}}"> Concluir </a>
-                <a href="/excluir?id={{$i}}"> Excluir </a>
-            </li>
+                    <div class="links">
+                        <a href="/concluir?id={{$i}}"> Concluir </a>
 
-            {{end}}
-        </ul>
+                        <a href="/excluir?id={{$i}}"> Excluir </a>
+                    </div>
+                </li>
+
+                {{end}}
+            </ul>
+        </div>
     </body>
 </html>
