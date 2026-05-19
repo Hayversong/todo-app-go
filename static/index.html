@@ -15,9 +15,13 @@
         </form>
 
         <ul>
-            {{range .}}
+            {{range $i, $tarefa := .}}
 
-            <li>{{.}}</li>
+            <li>
+                {{if $tarefa.Concluida}} ✔ {{else}} ☐ {{end}} {{$tarefa.Titulo}}
+
+                <a href="/concluir?id={{$i}}"> Alternar </a>
+            </li>
 
             {{end}}
         </ul>
